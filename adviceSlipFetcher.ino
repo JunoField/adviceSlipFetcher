@@ -109,11 +109,13 @@ void setup(){
 
     //display intro msg
     printToLCD("Quote generator", "Press button");
+    lcd.noBacklight();
+    
 }
 
 void loop(){
     if (digitalRead(BUTTON_PIN) == LOW){
-        
+        lcd.backlight();
         if (WiFi.status() == WL_CONNECTED){
             String quote = getNewQuote(api);
             printScrollingString(quote);
@@ -124,5 +126,6 @@ void loop(){
         
         delay(500);
         printToLCD("Quote Generator", "Press button");
+        lcd.noBacklight();
     }
 }
