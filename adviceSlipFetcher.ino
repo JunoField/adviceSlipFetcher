@@ -93,7 +93,7 @@ void setup(){
     //init lcd and pins
     lcd.init();
     lcd.backlight();
-    pinMode(BUTTON_PIN, INPUT);
+    pinMode(BUTTON_PIN, INPUT_PULLUP);
 
     //Connect to WiFi
     printToLCD("Connecting to", "WiFi");
@@ -112,7 +112,7 @@ void setup(){
 }
 
 void loop(){
-    if (digitalRead(BUTTON_PIN) == HIGH){
+    if (digitalRead(BUTTON_PIN) == LOW){
         
         if (WiFi.status() == WL_CONNECTED){
             String quote = getNewQuote(api);
